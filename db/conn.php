@@ -1,17 +1,17 @@
 <?php
     //dev connection
-    $host = '127.0.0.1';
-   $db = 'institute_db';
-   $user = 'root';
-    $pass = '';
-    $charset = 'utf8mb4';
+  //   $host = '127.0.0.1';
+  //  $db = 'institute_db';
+  //  $user = 'root';
+  //   $pass = '';
+  //   $charset = 'utf8mb4';
 
     //remote connections
-    // $host = 'remotemysql.com';
-    // $db = 'EKKNRW31mk';
-    // $user = 'EKKNRW31mk';
-    // $pass = 'bxicmaEZs5';
-    // $charset = 'utf8mb4';
+    $host = 'remotemysql.com';
+    $db = 'EKKNRW31mk';
+    $user = 'EKKNRW31mk';
+    $pass = 'bxicmaEZs5';
+    $charset = 'utf8mb4';
     
 
     $dsn = "mysql:host=$host; dbname=$db; charset=$charset";
