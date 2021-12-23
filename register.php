@@ -26,28 +26,38 @@
             $emailErr = "<span class='text-danger'>Invalid email format</span>";
           } else {
             
-        //profile image
-        $orig_file = $_FILES["proimg"]["tmp_name"];
-        $ext = pathinfo($_FILES["proimg"]["name"], PATHINFO_EXTENSION);
-        $target_dir = 'uploads/';
-        $destination = "$target_dir$email.$ext";
-        move_uploaded_file($orig_file, $destination);
+            if ($_FILES['proimg']['size'] == 0 ){
+                $destination = "uploads/defImage.png";
+            
+            }
+            else{
+                //profile image
+            $orig_file = $_FILES["proimg"]["tmp_name"];
+            $ext = pathinfo($_FILES["proimg"]["name"], PATHINFO_EXTENSION);
+            $target_dir = 'uploads/';
+            $destination = "$target_dir$email.$ext";
+            move_uploaded_file($orig_file, $destination);
+            }
 
-        $isSuccess = $crud->insertSubscribers($fname,$lname, $email, $home_address, $gender, $destination);
 
-        if(!$isSuccess){ ?>        
-            <br>
-            <div class="alert alert-danger">An account with email <?php echo $_POST['email'] ?> already exists. Please try again.</div>
-            <?php   }
-         else{
-            $_SESSION['firstname'] = $fname;
-            $_SESSION['lastname'] = $lname;
-            $_SESSION['email'] = $email;
-            $_SESSION['home_address'] = $home_address;
-            $_SESSION['gender'] = $gender;
-            $_SESSION['imagepath'] = $destination;
-            header("Location: success.php");
-         }
+            
+
+            $isSuccess = $crud->insertSubscribers($fname,$lname, $email, $home_address, $gender, $destination);
+
+            if(!$isSuccess){ ?>        
+                <br>
+                <div class="alert alert-danger">An account with email <?php echo $_POST['email'] ?> already exists. Please try again.</div>
+                <?php   
+            }
+            else{
+                $_SESSION['firstname'] = $fname;
+                $_SESSION['lastname'] = $lname;
+                $_SESSION['email'] = $email;
+                $_SESSION['home_address'] = $home_address;
+                $_SESSION['gender'] = $gender;
+                $_SESSION['imagepath'] = $destination;
+                header("Location: success.php");
+            }
 
       }    
 

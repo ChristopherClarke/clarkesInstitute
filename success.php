@@ -18,7 +18,8 @@
     <div class="card p-4">
         <div class=" image d-flex flex-column justify-content-center align-items-center"> 
 
-                <button class="btn btn-secondary"> <img src="<?php echo $_SESSION['imagepath']; ?>" height="200" width="200" /></button> 
+                <!-- <button class="btn btn-secondary"> <img src="<?php echo empty($_SESSION['imagepath']) ? "uploads/defImage.png" : $_SESSION['imagepath'] ; ?>" height="200" width="200" /></button>  -->
+               <button class="btn btn-secondary"> <img src="<?php echo $_SESSION['imagepath']; ?>" height="200" width="200" /></button> 
                 <span class="name mt-3"><b><?php echo $_SESSION['firstname'].' '. $_SESSION['lastname'] ?></b></span> 
                 <span class="idd"><?php echo $_SESSION['email'] ?></span>
 
